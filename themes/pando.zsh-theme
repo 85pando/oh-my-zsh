@@ -8,6 +8,12 @@ local time='%{$fg[cyan][%U%D-%*%u]%}'
 
 PROMPT="╭─${user_host} ${time} ${current_dir} ${git_branch}
 ╰─%B$%b "
+if [ "$(uname -s)" = "Darwin" ]; then
+ME_EMOJI=(🐶 🐱 🐭 🐹 🐰 🐸 🐯 🐨 🐻 🐷 🐮 🐵 🐼 🐙);
+RANDOM_ME_EMOJI=${ME_EMOJI[$((RANDOM%14))]};
+PROMPT="╭─${user_host} ${time} ${current_dir} ${git_branch}
+╰─%B${RANDOM_ME_EMOJI} $%b "
+fi
 RPS1="${return_code}"
 
 git_color="%{$fg[yellow]%}"
